@@ -60,7 +60,32 @@ console.log(scores.filter((scores) => scores.marks == topMark).map(({name}) => n
 // Only use
 // map, reduce, filter & destructuring
 
-// Task 6 - use es6
-// Build -  intersection, uniq, without, groupBy
-// https://lodash.com/docs/4.17.15#groupBy
+
+class BankDetails {
+  constructor (name, accountType, accountNo, openingBalance) {
+      this.name = name;
+      this.accountType = accountType;
+      this.accountNo = accountNo;
+      this.openingBalance = openingBalance;
+  }
+  getBalance () { return "Your Balance is" + " " + this.openingBalance; };
+  withdraw (val) {
+      this.openingBalance = this.openingBalance - val;
+      if (this.openingBalance < 0) {
+          return `Insufficient Balance. Your balance is ${this.openingBalance}`
+      }
+      else {
+          return `Your Balance is ${this.openingBalance}`;
+      }
+      
+  }
+}
+
+const Sourab = new BankDetails('Sourab', 'SB', '12345', 25_000);
+const Lokesh = new BankDetails('Lokesh', 'SB', '25781', 10_000);
+const Surya = new BankDetails('Surya', 'SB', '163218', 100_000);
+const Asrita = new BankDetails('Asrita', 'SB', '21684', 20_000);
+
+console.log(Lokesh.withdraw(10001));
+
 
